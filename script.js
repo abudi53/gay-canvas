@@ -1,11 +1,13 @@
 const canvas = document.querySelector(".canvas")
 
 function createCanvas(param) {
+    let todo = Array.from(document.querySelectorAll(".square"))
+    todo.forEach(square => {
+        square.remove();
+    });
+
     for (let i = 0; i < param; i++) {
         canvas.appendChild(document.createElement("div")).classList.add("square", "row")
-
-        for (let i = 0; i < param; i++) {
-        }   
     }
     const rows = Array.from(document.querySelectorAll(".row"))
     rows.forEach(square => {
@@ -23,5 +25,15 @@ function createCanvas(param) {
         })
     });
 }
+createCanvas(16)
 
-createCanvas(50)
+const btn = document.querySelector(".fill")
+
+btn.addEventListener("click", () => {
+    let numS = prompt("How many squares do you want? Limit = 100")
+    if (numS > 100) {
+        alert("The limit is 100x100 squares!")
+    } else {
+        createCanvas(numS)
+    }
+})
