@@ -1,5 +1,11 @@
 const canvas = document.querySelector(".canvas")
 
+function random_rgba() {
+    let o = Math.round, r = Math.random, s = 255;
+    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+}
+
+
 function createCanvas(param) {
     let todo = Array.from(document.querySelectorAll(".square"))
     todo.forEach(square => {
@@ -21,7 +27,8 @@ function createCanvas(param) {
     squares = Array.from(document.querySelectorAll(".col"))
     squares.forEach(square => {
         square.addEventListener("mouseenter", (e) => {
-            square.classList.add("hover");
+            let color = random_rgba();
+            square.style.background = color;
         })
     });
 }
